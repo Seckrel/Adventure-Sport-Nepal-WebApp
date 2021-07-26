@@ -1,5 +1,7 @@
-from django.urls import path, include
+from django.urls import path
+
+
+app_name = 'ski'
 
 urlpatterns = [
-    path('', include('frontend.urls'))
 ]
