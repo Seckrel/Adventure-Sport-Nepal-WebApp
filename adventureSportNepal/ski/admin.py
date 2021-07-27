@@ -1,6 +1,5 @@
 from django.contrib import admin
 from . models import *
-from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 # Register your models here.
 
 
@@ -20,14 +19,18 @@ class ItineraryInfoInline(admin.TabularInline):
     model = ItineraryInfo
 
 
-class PackageInclustionTypeInline(admin.StackedInline):
-    model = PackageInclustionType
+class PackageInclusionInline(admin.StackedInline):
+    model = PackageInclusion
+
+
+class PackageExclusionInline(admin.StackedInline):
+    model = PackageExclusion
 
 
 class SkiAdmin(admin.ModelAdmin):
     model = Ski
     inlines = [HookInline, ExpeditionInfoInline, PricingInfoInline,
-               ItineraryInfoInline, PackageInclustionTypeInline]
+               ItineraryInfoInline, PackageInclusionInline, PackageExclusionInline]
 
 
 admin.site.register(Ski, SkiAdmin)

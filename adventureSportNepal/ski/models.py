@@ -28,20 +28,14 @@ class ItineraryInfo(models.Model):
     itinerary_description = models.TextField()
 
 
-class PakageInclusionDetail(models.Model):
-    description = models.TextField()
-    package_inclusion_type = models.ForeignKey(
-        'PackageInclustionType', on_delete=models.CASCADE, default=None)
+class PackageInclusion(models.Model):
+    ski = models.ForeignKey('ski', on_delete=models.CASCADE, default=None)
+    inclusion_decription = models.TextField()
 
 
-class PackageInclustionType(models.Model):
-    INCLUSION_TYPE = (
-        (0, 'Included'),
-        (1, 'Excluded')
-    )
-    included_type = models.IntegerField(choices=INCLUSION_TYPE, default=0)
-    ski = models.OneToOneField(
-        "ski", on_delete=models.CASCADE, default=None)
+class PackageExclusion(models.Model):
+    ski = models.ForeignKey('ski', on_delete=models.CASCADE, default=None)
+    exclusion_decription = models.TextField()
 
 
 class Ski(models.Model):
