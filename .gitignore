@@ -751,6 +751,9 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 
+## rest client
+**/**/.rest
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
