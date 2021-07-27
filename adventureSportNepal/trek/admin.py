@@ -26,10 +26,10 @@ class PackageExclusionInline(admin.StackedInline):
     model = PackageExclusion
 
 
-class SkiAdmin(admin.ModelAdmin):
-    model = Ski
+class TrekAdmin(admin.ModelAdmin):
+    model = Trek
     inlines = [HookInline, ExpeditionInfoInline, PricingInfoInline,
                ItineraryInfoInline, PackageInclusionInline, PackageExclusionInline]
 
 
-admin.site.register(Ski, SkiAdmin)
+admin.site.register(Trek, TrekAdmin)

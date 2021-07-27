@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'frontend.apps.FrontendConfig',
-    'ski'
+    'ski',
+    'trek'
 ]
 
 MIDDLEWARE = [
