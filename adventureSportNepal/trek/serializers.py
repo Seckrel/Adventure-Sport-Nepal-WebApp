@@ -12,28 +12,28 @@ def CustomSlugRelatedField(field):
 class HookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hook
-        exclude = ('id', 'ski')
+        exclude = ('id', 'trek')
 
 
 class ExpeditionInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExpeditionInfo
-        exclude = ('id', 'ski')
+        exclude = ('id', 'trek')
 
 
 class PricingInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PricingInfo
-        exclude = ('id', 'ski')
+        exclude = ('id', 'trek')
 
 
 class ItineraryInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItineraryInfo
-        exclude = ('id', 'ski')
+        exclude = ('id', 'trek')
 
 
-class SkiSerializer(serializers.ModelSerializer):
+class TrekSerializer(serializers.ModelSerializer):
     hook = HookSerializer()
     expedition_info = ExpeditionInfoSerializer()
     pricing_info = PricingInfoSerializer()
@@ -42,6 +42,6 @@ class SkiSerializer(serializers.ModelSerializer):
     package_exclusion = CustomSlugRelatedField('exclusion_decription')
 
     class Meta:
-        model = Ski
+        model = Trek
         fields = ('id', 'package_name', 'hook', 'expedition_info', 'pricing_info',
                   'itinerary_info', 'package_inclusion', 'package_exclusion')

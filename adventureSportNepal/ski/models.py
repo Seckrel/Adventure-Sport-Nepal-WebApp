@@ -19,8 +19,8 @@ class Hook(models.Model):
 class ExpeditionInfo(models.Model):
     expedition_title = models.CharField(max_length=50)
     expedition_description = models.TextField()
-    ski = models.OneToOneField(
-        "ski", on_delete=models.CASCADE, default=None, related_name="expedition_info")
+    ski = models.OneToOneField("ski", on_delete=models.CASCADE,
+                               default=None, related_name="expedition_info")
 
     class Meta:
         verbose_name = "Title of the Expedition with short description"
@@ -33,17 +33,15 @@ class PricingInfo(models.Model):
     price = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name="Price in USD",
         validators=[MinValueValidator(0.01)])
-    # to validate
     available_date = models.DateField(verbose_name="Available Date (A.D.)")
-    ski = models.OneToOneField(
-        'ski', on_delete=models.CASCADE, default=None, related_name="pricing_info")
+    ski = models.OneToOneField('ski', on_delete=models.CASCADE,
+                               default=None, related_name="pricing_info")
 
     class Meta:
         verbose_name = "Price of the package and nearest available date for it"
         constraints = [
             models.CheckConstraint(check=models.Q(
-                price__gte=0), name='price_gte_0'),
-
+                price__gte=0), name='ski_price_gte_0'),
         ]
 
     def clean(self):
@@ -60,19 +58,20 @@ class ItineraryInfo(models.Model):
         "Ski", on_delete=models.CASCADE, related_name="itinerary_info")
     # to validate
     start = models.PositiveIntegerField(verbose_name="Start Day")
-    end = models.PositiveIntegerField(verbose_name="End Day", blank=True)
+    end = models.PositiveIntegerField(
+        verbose_name="End Day", blank=True, null=True)
     itinerary_description = models.TextField()
 
     class Meta:
         verbose_name = "List Itinerary info about this package"
 
     def clean(self):
-        if self.end < self.start:
+        if self.end and (self.end < self.start):
             raise ValidationError('End day cannot be smaller than start')
 
     def save(self, *args, **kwargs):
-        if not self.end:
-            self.end = self.start
+        if self.start == self.end:
+            self.end = None
         super().save(*args, **kwargs)
 
     def __str__(self):
