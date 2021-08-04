@@ -1,24 +1,28 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchData, selectData, status } from "./reducers/fetchData";
+import {
+  getData,
+  selectData,
+  selectStatus
+} from './reducers/fetchData';
 
-export default () => {
-    const data = useSelector(selectData);
-    const fetchStatus = useSelector(status);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        console.log(fetchStatus);
-        if (fetchStatus === 'idel') {
-            dispatch(fetchData);
-        } else {
-            console.log("data");
-            console.log(data)
-        }
-    }, [fetchStatus, dispatch])
-    return (
-        <div>
-            {console.log(data)}
-            running
-        </div>
-    );
+export default function App() {
+  const data = useSelector(selectData);
+  const status = useSelector(selectStatus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("status: ", status);
+    if (status === 'idel'){
+        dispatch(getData());
+    }
+    console.log("data", data);
+  }, [data, status, dispatch]);
+
+  return (
+    <div>
+      {console.log(data)}
+      "running"
+    </div>
+  );
 }

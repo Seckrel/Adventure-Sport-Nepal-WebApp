@@ -1,30 +1,34 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-
-export const fetchData = createAsyncThunk('data/fetch', async () => {
-    console.log("working")
-    const res = await fetch("https://randomuser.me/api/");
-    console.log(res.json())
-    return res
-})
-
-
-const initialValue: any = {
-    value: [],
-    status: 'idel'
-}
+export const getData = createAsyncThunk(
+    'data/getData', async () => {
+        return fetch("https://randomuser.me/api/")
+            .then(res => res.json())
+            .then(data => data.results)
+    }
+)
 
 export const slice = createSlice({
     name: 'data',
-    initialState: initialValue,
+    initialState: {
+        value: [],
+        status: 'idel'
+    },
     reducers: {},
     extraReducers: {
-        [fetchData.pending.toString()]: state => state.status = 'pending',
-        [fetchData.fulfilled.toString()]: (state, action) => state.value =action.payload,
+        [getData.pending.toString()]: (state, _) => {
+            state.status = "loading";
+        },
+        [getData.fulfilled.toString()]: (state, action) => {
+            state.value = action.payload;
+        }
     }
 });
 
-export const selectData = (state: any) => state.value;
-export const status = (state: any) => state.status;
+
+export const selectData = (state: any) => state.counter.value;
+export const selectStatus = (state: any) => state.counter.status;
 
 export default slice.reducer;
+
+
