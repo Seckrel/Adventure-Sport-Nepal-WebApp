@@ -46,10 +46,10 @@ export default function LandingShowCase() {
     return (
         <Box className={clsx(classes.box, classes.img)}>
             <img
-                srcSet={`./assets/images/bigshowcase_600.jpg ${theme.breakpoints.values.sm}w,\
-                ./assets/images/bigshowcase_960.jpg ${theme.breakpoints.values.md}w,\
-                ./assets/images/bigshowcase_1280.jpg ${theme.breakpoints.values.lg}w,\
-                ./assets/images/bigshowcase_1920.jpg ${theme.breakpoints.values.xl}w,\
+                srcSet={`/static/images/bigshowcase_600.jpg ${theme.breakpoints.values.sm}w,\
+                ./static/images/bigshowcase_960.jpg ${theme.breakpoints.values.md}w,\
+                ./static/images/bigshowcase_1280.jpg ${theme.breakpoints.values.lg}w,\
+                ./static/images/bigshowcase_1920.jpg ${theme.breakpoints.values.xl}w,\
                 `}
                 alt={"showcase image of mountain"}
                 className={clsx("img-fluid", classes.img)}

@@ -30,17 +30,17 @@ const PackagesData = [
         type: "Location",
         packages: [
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 name: "Mt. Everset",
                 index: 1
             },
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 2,
                 name: "Manaslu"
             },
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 3,
                 name: "Lhotse"
             }
@@ -50,12 +50,12 @@ const PackagesData = [
         type: "Combo",
         packages: [
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 4,
                 name: "2 Mt Combo"
             },
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 5,
                 name: "Ski + trek combo"
             }
@@ -65,12 +65,12 @@ const PackagesData = [
         height: "Height",
         packages: [
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 6,
                 name: "8000 m"
             },
             {
-                imgSrc: "assets/images/mt_everset_640.jpg",
+                imgSrc: "static/images/mt_everset_640.jpg",
                 index: 7,
                 name: "6000 m"
             }
