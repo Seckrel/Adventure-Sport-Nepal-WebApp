@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend.apps.FrontendConfig',
     'ski',
-    'trek'
+    'trek',
+    'faq'
 ]
 
 MIDDLEWARE = [

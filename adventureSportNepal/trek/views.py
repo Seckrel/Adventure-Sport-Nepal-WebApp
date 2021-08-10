@@ -9,6 +9,6 @@ import json
 class ShowAll(APIView):
     serializer_class = TrekSerializer
     def get(self, request):
-        queryset = Trek.object.all()
+        queryset = Trek.objects.all()
         objects = self.serializer_class(queryset[0]).data
         print(json.dumps(objects, indent=4))

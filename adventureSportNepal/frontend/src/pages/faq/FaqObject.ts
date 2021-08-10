@@ -1,6 +1,40 @@
 export const FaqObject = [
     {
-        label: "ski",
+        label: "ski1",
+        faqs: [
+            {
+                question: "Hey what's up",
+                answer: "Nothing much, ski"
+            },
+            {
+                question: "What is your name",
+                answer: "Sulav"
+            },
+            {
+                question: "Where do you live?",
+                answer: "None of your god damn business"
+            }
+        ]
+    },
+    {
+        label: "trek1",
+        faqs: [
+            {
+                question: "Hey what's up",
+                answer: "Nothing much"
+            },
+            {
+                question: "What is your name",
+                answer: "Sulav"
+            },
+            {
+                question: "Where do you live?",
+                answer: "None of your god damn business"
+            }
+        ]
+    },
+    {
+        label: "ski2",
         faqs: [
             {
                 question: "Hey what's up",
@@ -51,7 +85,7 @@ export const FaqObject = [
         ]
     },
     {
-        label: "trek",
+        label: "paragliding",
         faqs: [
             {
                 question: "Hey what's up",
@@ -68,11 +102,11 @@ export const FaqObject = [
         ]
     },
     {
-        label: "ski",
+        label: "snowboarding",
         faqs: [
             {
                 question: "Hey what's up",
-                answer: "Nothing much, ski"
+                answer: "Nothing much"
             },
             {
                 question: "What is your name",
@@ -83,5 +117,5 @@ export const FaqObject = [
                 answer: "None of your god damn business"
             }
         ]
-    }
+    },
 ]

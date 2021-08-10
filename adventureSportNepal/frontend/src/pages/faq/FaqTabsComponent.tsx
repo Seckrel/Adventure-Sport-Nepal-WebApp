@@ -48,16 +48,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-const useFlexContainerStyle = makeStyles((theme: Theme) => ({
-    flexContainer: {
-        justifyContent: "center",
-    },
-}));
 
 export default function FaqTabsComponent() {
     const classes = useStyles();
     const [value, setValue] = useState(0);
-    const flexContainerCenter = useFlexContainerStyle();
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
@@ -66,20 +60,24 @@ export default function FaqTabsComponent() {
     return (
         <div className={classes.root}>
             <AppBar position="static" color="default">
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    variant="scrollable"
-                    scrollButtons="auto"
-                    aria-label="scrollable auto tabs"
-                    classes={flexContainerCenter}
+                <Box
+                    display="flex"
+                    justifyContent="center"
                 >
-                    {FaqObject.map((item: any, idx: number) => (
-                        <Tab label={item.label} key={idx} {...a11yProps(idx)} />
-                    ))}
-                </Tabs>
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        variant="scrollable"
+                        scrollButtons="auto"
+                        aria-label="scrollable auto tabs"
+                    >
+                        {FaqObject.map((item: any, idx: number) => (
+                            <Tab label={item.label} key={idx} {...a11yProps(idx)} />
+                        ))}
+                    </Tabs>
+                </Box>
             </AppBar>
             {FaqObject.map((item: any, idx: number) => (
                 <TabPanel value={value} key={idx} index={idx}>
