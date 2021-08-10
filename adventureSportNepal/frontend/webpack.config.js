@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const ESLintPlugin = require('eslint-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: "./src/index.tsx",
@@ -22,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                use: ["style-loader", "css-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
             {
                 test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
@@ -40,6 +41,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             "React": "react",
         }),
-        new ESLintPlugin()
+        new ESLintPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '../css/index.css'
+        }),
     ],
 };
