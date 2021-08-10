@@ -5,6 +5,7 @@ import {
 import { useMemo } from 'react';
 import Header from './header/HeaderComponent';
 import Body from "./BodyComponent";
+import Footer from './footer/FooterComponent';
 
 
 // declare module '@material-ui/core/styles/createTheme' {
@@ -68,6 +69,7 @@ export default function Main() {
         <ThemeProvider theme={theme}>
             <Header />
             <Body />
+            <Footer />
         </ThemeProvider>
     )
 }
