@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'frontend.apps.FrontendConfig',
     'ski',
     'trek',
-    'faq'
+    'faq',
+    'navigation'
 ]
 
 MIDDLEWARE = [
