@@ -2,14 +2,15 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import *
+from rest_framework import status
 from trek.models import Trek
 from ski.models import Ski
 import json
 
 
 class NavigationList(APIView):
-    print('running')
     def get(self, request):
+        print('\n\n\n******running****\n\n\n')
         trek_queryset = Trek.objects.all()
         ski_queryset = Ski.objects.all()
         objects = {
@@ -21,5 +22,5 @@ class NavigationList(APIView):
 
         for query_item in ski_queryset:
             objects['ski'].append(SkiNavSerializer(query_item).data)
-        
-        print(json.dumps(objects, indent=4))
+
+        return Response(objects, status=status.HTTP_200_OK)

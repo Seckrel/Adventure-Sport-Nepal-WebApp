@@ -13,6 +13,9 @@ import NavigationDrawer from './components/NavigationDrawer';
 import { useStyles } from './style';
 import { useTheme } from '@material-ui/core/styles';
 import DestopNavigation from './components/DestopNavigation';
+// redux
+import { useDispatch, useSelector } from 'react-redux';
+import { selectExpeditionList, selectStatus, getNavigationList } from './navigationSlice';
 
 
 interface Props {
@@ -41,11 +44,17 @@ export default function Header() {
     });
     const classes = useStyles(trigger);
 
+    const status = useSelector(selectStatus);
+    const expenditionList = useSelector(selectExpeditionList);
+    const dispatch = useDispatch();
+
     const theme = useTheme();
     const handleDrawerToggle = (): void => {
         setIsDrawerOpen(!isDrawerOpen);
     };
-
+    useEffect(() => {
+        if (status === 'idel') dispatch(getNavigationList());
+    }, []);
     useEffect(() => {
         const reponsiveness = () => setInnerWidth(window.innerWidth);
         window.addEventListener("resize", () => reponsiveness())
@@ -53,6 +62,7 @@ export default function Header() {
 
     return (
         <Fragment>
+            {console.log(expenditionList)}
             <ElevationScroll trigger={trigger}>
                 <AppBar className={classes.appBar}>
                     <Toolbar variant="regular" component={"nav"}>
@@ -74,7 +84,6 @@ export default function Header() {
                                                 edge="start"
                                                 color="inherit"
                                                 aria-label="menu"
-                                                // className={classes.menuButton}
                                                 onClick={handleDrawerToggle}
                                             >
                                                 <MenuIcon fontSize={"large"} />
