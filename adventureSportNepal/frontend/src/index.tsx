@@ -21,7 +21,6 @@ try {
             <Provider store={store}>
                 <React.StrictMode>
                     <App />
-                    {console.log("process" ,window.PUBLIC)}
                 </React.StrictMode>,
             </Provider>
         </BrowserRouter>,

@@ -121,7 +121,7 @@ export const Expeditions: NavigationItemType[] = [
         items: null
     },
     {
-        name: "SKI",
+        name: "SKING",
         items: [
             {
                 name: "Ski in Puthan Hinchuli (7426m)",

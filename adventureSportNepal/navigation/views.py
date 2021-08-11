@@ -8,19 +8,30 @@ from ski.models import Ski
 import json
 
 
+def CreatingReturnObject(expedition_item, query_set, serializer_class):
+    objects = {
+        'name': expedition_item,
+        'items': []
+    }
+    for query_item in query_set:
+        objects['items'].append(serializer_class(query_item).data)
+    return objects
+
+
 class NavigationList(APIView):
     def get(self, request):
         print('\n\n\n******running****\n\n\n')
         trek_queryset = Trek.objects.all()
         ski_queryset = Ski.objects.all()
-        objects = {
-            'trek': [],
-            'ski': []
+        response = {
+            "expeditionList": [
+
+            ]
         }
-        for query_item in trek_queryset:
-            objects['trek'].append(TrekNavSerializer(query_item).data)
+        response['expeditionList'].append(CreatingReturnObject(
+            "treking", trek_queryset, TrekNavSerializer))
+        response['expeditionList'].append(CreatingReturnObject(
+            "sking", ski_queryset, SkiNavSerializer
+        ))
 
-        for query_item in ski_queryset:
-            objects['ski'].append(SkiNavSerializer(query_item).data)
-
-        return Response(objects, status=status.HTTP_200_OK)
+        return Response(response, status=status.HTTP_200_OK)

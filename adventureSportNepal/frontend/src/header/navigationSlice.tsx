@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Expeditions } from './components/MenuItems';
-import { ItemsType } from './types';
+import { NavigationItemType } from './types';
 
 export const getNavigationList = createAsyncThunk(
     'navigationList/getNavigationList', async () => {
@@ -15,27 +14,23 @@ export const getNavigationList = createAsyncThunk(
         };
         return await fetch('http://127.0.0.1:8000/navigation/show-nav', options)
             .then(res => {
-                console.log(res.json());
                 return res.json();
             })
+            .then(data => data.expeditionList)
             .catch((err: Error) => console.log(err.message))
 
-            .catch(data => data.error);
     })
 
 interface SliceState {
     status: 'idel' | 'loading' | 'finished';
-    expeditions?: any;
+    expeditions?: NavigationItemType;
 }
 
-interface IExpeditionItems {
-    trek?: ItemsType[] | null;
-    ski?: ItemsType[] | null;
-}
 
 const initialState: SliceState = {
     status: 'idel'
 };
+
 
 export const slice = createSlice({
     name: 'navigationList',

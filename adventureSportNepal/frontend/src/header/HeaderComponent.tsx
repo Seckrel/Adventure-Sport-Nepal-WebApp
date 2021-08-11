@@ -16,6 +16,7 @@ import DestopNavigation from './components/DestopNavigation';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { selectExpeditionList, selectStatus, getNavigationList } from './navigationSlice';
+import { Expeditions } from './components/MenuItems';
 
 
 interface Props {
@@ -45,7 +46,7 @@ export default function Header() {
     const classes = useStyles(trigger);
 
     const status = useSelector(selectStatus);
-    const expenditionList = useSelector(selectExpeditionList);
+    const expeditionList = useSelector(selectExpeditionList);
     const dispatch = useDispatch();
 
     const theme = useTheme();
@@ -55,6 +56,7 @@ export default function Header() {
     useEffect(() => {
         if (status === 'idel') dispatch(getNavigationList());
     }, []);
+
     useEffect(() => {
         const reponsiveness = () => setInnerWidth(window.innerWidth);
         window.addEventListener("resize", () => reponsiveness())
@@ -62,7 +64,7 @@ export default function Header() {
 
     return (
         <Fragment>
-            {console.log(expenditionList)}
+            {console.log("exp", expeditionList)}
             <ElevationScroll trigger={trigger}>
                 <AppBar className={classes.appBar}>
                     <Toolbar variant="regular" component={"nav"}>
