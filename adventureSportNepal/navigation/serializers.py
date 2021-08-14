@@ -12,7 +12,7 @@ class TrekNavSerializer(serializers.ModelSerializer):
         fields = ('name', 'href')
 
     def get_href(self, obj):
-        return f"ski/{obj.id}"
+        return f"/trek/{obj.id}"
 
 
 class SkiNavSerializer(serializers.ModelSerializer):
@@ -24,4 +24,4 @@ class SkiNavSerializer(serializers.ModelSerializer):
         fields = ('name', 'href')
 
     def get_href(self, obj):
-        return f"ski/{obj.id}"
+        return f"/ski/{obj.id}"

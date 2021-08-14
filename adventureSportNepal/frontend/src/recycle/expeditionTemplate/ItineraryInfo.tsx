@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function ItineraryInfo({ itineraryInfo }: any) {
+export default function ItineraryInfo({ itinerary_info }: any) {
     const classes = useStyles();
 
     return (
@@ -37,7 +37,7 @@ export default function ItineraryInfo({ itineraryInfo }: any) {
             className={classes.boxStyle}
         >
             <Timeline align="alternate">
-                {itineraryInfo.map((item: any, idx: number) => (
+                {itinerary_info.map((item: any, idx: number) => (
                     <TimelineItem key={idx}>
                         <TimelineSeparator>
                             <TimelineDot
@@ -50,7 +50,7 @@ export default function ItineraryInfo({ itineraryInfo }: any) {
                                 <HotelIcon />
                             </TimelineDot>
                             {
-                                idx === (itineraryInfo.length - 1)
+                                idx === (itinerary_info.length - 1)
                                     ? null : <TimelineConnector />
                             }
                         </TimelineSeparator>
@@ -58,11 +58,11 @@ export default function ItineraryInfo({ itineraryInfo }: any) {
                             <Paper elevation={3} className={classes.paper}>
                                 <Typography variant="h6" component="h1">
                                     Day {item.start} {
-                                        item.start === item.end
+                                        item.start === item.end || item.end === null
                                             ? null : (" - " + item.end)
                                     }
                                 </Typography>
-                                <Typography>{item.detail}</Typography>
+                                <Typography>{item.itinerary_description}</Typography>
                             </Paper>
                         </TimelineContent>
                     </TimelineItem>

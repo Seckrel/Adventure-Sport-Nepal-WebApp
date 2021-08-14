@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from '../reducers/fetchData';
 import NavigationListReducer from '../header/navigationSlice';
+import SkiPackageReducer from '../pages/ski/skiSlice';
+import TrekPackageReducer from '../pages/trek/trekSlice';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
-        navigationList: NavigationListReducer
+        navigationList: NavigationListReducer,
+        skiPackage: SkiPackageReducer,
+        trekPackage: TrekPackageReducer,
     },
 })
 

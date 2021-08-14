@@ -5,6 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -58,7 +59,6 @@ export default function DropDownList(props: any) {
         setIsOpen(false)
         setExpand([])
     }
-
     return (
         <Fragment>
             <Grid
@@ -76,8 +76,8 @@ export default function DropDownList(props: any) {
                             float: "left"
                         }}
                     >
-                        {props.items.map((item: any) =>
-                            item.items
+                        {props.dropDownItems.map((item: any) =>
+                            item.hasOwnProperty('items')
                                 ? (
                                     <ListItem
                                         button
@@ -89,6 +89,8 @@ export default function DropDownList(props: any) {
                                 ) : (
                                     <ListItem
                                         button
+                                        component={Link}
+                                        to={item.href}
                                         className={classes.hoverTransition}
                                         onMouseEnter={() => handleMouseLeave()}
                                     >
@@ -102,7 +104,7 @@ export default function DropDownList(props: any) {
                 {isOpen === true && expand
                     ? (
                         <Grid item xs={6}>
-                            <DropDownList items={expand} />
+                            <DropDownList dropDownItems={expand} />
                         </Grid>
                     ) : null}
             </Grid>

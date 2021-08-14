@@ -31,7 +31,6 @@ class NavigationList(APIView):
         response['expeditionList'].append(CreatingReturnObject(
             "treking", trek_queryset, TrekNavSerializer))
         response['expeditionList'].append(CreatingReturnObject(
-            "sking", ski_queryset, SkiNavSerializer
-        ))
+            "sking", ski_queryset, SkiNavSerializer))
 
         return Response(response, status=status.HTTP_200_OK)
