@@ -87,6 +87,10 @@ export const Expeditions = [
                 name: "Manaslu Circuit Trek",
                 href: '',
             },
+            {
+                name: "K2 Circuit Trek",
+                href: '',
+            },
         ]
     }
 ]
