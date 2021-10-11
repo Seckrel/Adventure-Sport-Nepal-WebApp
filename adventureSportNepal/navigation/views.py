@@ -3,8 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import *
 from rest_framework import status
-from trek.models import Trek
-from ski.models import Ski
+from .models import *
 import json
 
 
@@ -21,8 +20,8 @@ def CreatingReturnObject(expedition_item, query_set, serializer_class):
 class NavigationList(APIView):
     def get(self, request):
         print('\n\n\n******running****\n\n\n')
-        trek_queryset = Trek.objects.all()
-        ski_queryset = Ski.objects.all()
+        trek_queryset = TrekNav.objects.all()
+        ski_queryset = SkiNav.objects.all()
         response = {
             "expeditionList": [
 
