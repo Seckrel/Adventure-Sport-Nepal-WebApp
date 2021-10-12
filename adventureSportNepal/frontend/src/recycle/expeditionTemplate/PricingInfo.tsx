@@ -30,7 +30,7 @@ const CustomBoxItem = ({ content }: any) => (
     </Box>
 )
 
-export default function PricingInfo({ pricingInfo }: any) {
+export default function PricingInfo({ pricing_info }: any) {
     const classes = useStyles();
     return (
         <Box
@@ -56,13 +56,13 @@ export default function PricingInfo({ pricingInfo }: any) {
                                     <CustomBoxItem content={"Date available"} />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <CustomBoxItem content={pricingInfo.dateAvailable} />
+                                    <CustomBoxItem content={pricing_info.available_date} />
                                 </Grid>
                                 <Grid item xs={6} className={classes.customBoxItem}>
                                     <CustomBoxItem content={"Price"} />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <CustomBoxItem content={pricingInfo.price} />
+                                    <CustomBoxItem content={pricing_info.price} />
                                 </Grid>
                             </Grid>
                         </Box>

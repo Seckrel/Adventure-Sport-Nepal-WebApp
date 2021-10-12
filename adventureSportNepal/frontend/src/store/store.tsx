@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import NavigationListReducer from '../header/navigationSlice';
+import SkiPackageReducer from '../pages/ski/skiSlice';
+import TrekPackageReducer from '../pages/trek/trekSlice';
 
 export const store = configureStore({
     reducer: {
-        navigationList: NavigationListReducer
+        navigationList: NavigationListReducer,
+        skiPackage: SkiPackageReducer,
+        trekPackage: TrekPackageReducer,
     },
 })
 

@@ -17,6 +17,7 @@ import DestopNavigation from './components/DestopNavigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectExpeditionList, selectStatus, getNavigationList } from './navigationSlice';
 import { Expeditions } from './components/MenuItems';
+import { NavigationItemType } from './types.d';
 
 
 interface Props {
@@ -46,7 +47,7 @@ export default function Header() {
     const classes = useStyles(trigger);
 
     const status = useSelector(selectStatus);
-    const expeditionList = useSelector(selectExpeditionList);
+    const expeditionList: undefined | NavigationItemType[] = useSelector(selectExpeditionList);
     const dispatch = useDispatch();
 
     const theme = useTheme();
@@ -55,7 +56,8 @@ export default function Header() {
     };
     useEffect(() => {
         if (status === 'idel') dispatch(getNavigationList());
-    }, []);
+        console.log("exp", expeditionList)
+    }, [status]);
 
     useEffect(() => {
         const reponsiveness = () => setInnerWidth(window.innerWidth);
@@ -64,7 +66,6 @@ export default function Header() {
 
     return (
         <Fragment>
-            {console.log("exp", expeditionList)}
             <ElevationScroll trigger={trigger}>
                 <AppBar className={classes.appBar}>
                     <Toolbar variant="regular" component={"nav"}>
@@ -75,7 +76,7 @@ export default function Header() {
                         <Box ml="auto">
                             {innerWidth >= theme.breakpoints.values.md
                                 ? (
-                                    <DestopNavigation />
+                                    <DestopNavigation expeditionList={expeditionList} />
                                 ) : (
                                     <Fragment>
                                         <Fade

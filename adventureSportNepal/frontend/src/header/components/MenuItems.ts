@@ -4,12 +4,12 @@ export const AboutUs = [
         href: '',
     },
     {
-        name: "Saftey",
+        name: "Safety",
         href: '',
     },
 ]
 
-export const Expeditions = [
+export const Expeditions: NavigationItemType[] = [
     {
         name: "COMBO",
         href: '',
@@ -40,7 +40,7 @@ export const Expeditions = [
         ]
     },
     {
-        name: "mountainering",
+        name: "MOUNTAINEERING",
         items: [
             {
                 name: "Chulu West Peak Climbing (6419m)",
@@ -65,7 +65,7 @@ export const Expeditions = [
         ]
     },
     {
-        name: "Trekking",
+        name: "TREEKING",
         items: [
             {
                 name: "Annapurna Circuit Trek",

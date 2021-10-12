@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
         }
     }))
 
-export default function HookInfoText({ hookInfo }: any) {
+export default function HookInfoText({ hook }: any) {
     const classes = useStyles();
 
     return (
@@ -32,7 +32,7 @@ export default function HookInfoText({ hookInfo }: any) {
                         component={'div'}
                         className={classes.typography}
                     >
-                        <span>{hookInfo.title}</span><br />
+                        <span>{hook.hook_title}</span><br />
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -41,7 +41,7 @@ export default function HookInfoText({ hookInfo }: any) {
                         component={'p'}
                         className={classes.typography}
                     >
-                       {hookInfo.text}
+                       {hook.hook_description}
                     </Typography>
                 </Grid>
             </Grid>

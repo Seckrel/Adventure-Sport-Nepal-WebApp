@@ -13,17 +13,16 @@ export const getNavigationList = createAsyncThunk(
 
         };
         return await fetch('http://127.0.0.1:8000/navigation/show-nav', options)
-            .then(res => {
-                return res.json();
-            })
+            .then(res => res.json())
             .then(data => data.expeditionList)
             .catch((err: Error) => console.log(err.message))
 
-    })
+    }
+)
 
 interface SliceState {
     status: 'idel' | 'loading' | 'finished';
-    expeditions?: NavigationItemType;
+    expeditions?: NavigationItemType[];
 }
 
 

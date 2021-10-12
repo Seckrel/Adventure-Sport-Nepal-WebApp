@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) =>
         // icon
     }))
 
-export default function ExpeditionInfo({ expeditionInfo }: any) {
+export default function ExpeditionInfo({ expedition_info}: any) {
     const [readMoreState, setReadMoreState] = useState(false)
     const classes = useStyles(readMoreState);
     return (
@@ -64,12 +64,12 @@ export default function ExpeditionInfo({ expeditionInfo }: any) {
             <Box
                 p={5}
                 className={classes.background}
-                id={"expeditionInfo"}
+                id={"expedition_info"}
             >
                 <Grid container spacing={5}>
                     <Grid item>
                         <Typography variant={'h4'} component={'div'}>
-                            {expeditionInfo.title}
+                            {expedition_info.expedition_title}
                         </Typography>
                     </Grid>
                     <Grid item>
@@ -79,9 +79,7 @@ export default function ExpeditionInfo({ expeditionInfo }: any) {
                                 component={'div'}
                                 className={clsx(classes.typographyBody, classes.fadeIn)}
                             >
-                                {expeditionInfo.paragraphs.map((paragraph: any, idx: number) => (
-                                    <p key={idx}>{paragraph}</p>
-                                ))}
+                                <p>{expedition_info.expedition_description}</p>
                             </Typography>
                         </Box>
                     </Grid>

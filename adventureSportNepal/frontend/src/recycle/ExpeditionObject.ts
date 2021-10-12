@@ -15,7 +15,7 @@ export const ExpeditionObject = {
         dateAvailable: "2021/11/1",
         price: "$ 1500"
     },
-    itinerayInfo: [
+    itineraryInfo: [
         {
             start: '1',
             end: '1',
