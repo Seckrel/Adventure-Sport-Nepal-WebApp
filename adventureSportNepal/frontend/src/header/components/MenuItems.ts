@@ -1,3 +1,6 @@
+import { NavigationItemType } from '../types.d';
+
+
 export const AboutUs = [
     {
         name: "Our Team",
