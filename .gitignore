@@ -754,6 +754,9 @@ FodyWeavers.xsd
 ## rest client
 **/**/.rest
 
+## ignore main .js
+**/**/main.js
+
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 

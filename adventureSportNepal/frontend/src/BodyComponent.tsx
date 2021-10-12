@@ -10,10 +10,10 @@ export default function Body() {
             <Route exact path="/">
                 <Home />
             </Route>
-            <Route path="/ski">
+            <Route path="/ski/:id">
                 <SkiExpedition />
             </Route>
-            <Route path="/trek">
+            <Route path="/trek/:id">
                 <TrekExpedition />
             </Route>
             <Route path="/faq">

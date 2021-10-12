@@ -4,9 +4,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import DropDownList from './DropDownComponent';
 import { useState } from 'react';
-import { AboutUs, Expeditions } from './MenuItems';
+import { AboutUs } from './MenuItems';
 import { Fragment } from 'react';
-import Box from '@material-ui/core/Box';;
+import Box from '@material-ui/core/Box';
+import { NavigationItemType } from '../types.d';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -47,7 +49,11 @@ const CustomListItemText = ({ text, classes }: CustomListItemTextProps) => {
     )
 }
 
-export default function DesktopNavigation() {
+interface IProp {
+    expeditionList: undefined | NavigationItemType[]
+}
+
+export default function DesktopNavigation({ expeditionList }: IProp) {
     const classes = useStyles();
     const [isOpen, setIsOpen] = useState(false);
     const [expand, setExpand] = useState([]);
@@ -67,6 +73,8 @@ export default function DesktopNavigation() {
                 <List className={classes.root}>
                     <ListItem
                         button
+                        component={Link}
+                        to="/"
                         className={classes.hoverTransition}
                         onMouseEnter={() => handleMouseLeave()}
                     >
@@ -75,7 +83,7 @@ export default function DesktopNavigation() {
                     <ListItem
                         button
                         className={classes.hoverTransition}
-                        onMouseEnter={() => handleMouseEnter(Expeditions)}
+                        onMouseEnter={() => handleMouseEnter(expeditionList)}
                     >
                         <CustomListItemText text="EXPEDITIONS" classes={classes} />
                     </ListItem>
@@ -88,6 +96,8 @@ export default function DesktopNavigation() {
                     </ListItem>
                     <ListItem
                         button
+                        component={Link}
+                        to="/faq"
                         className={classes.hoverTransition}
                         onMouseEnter={() => handleMouseLeave()}
                     >
@@ -109,12 +119,12 @@ export default function DesktopNavigation() {
                                 position: "absolute",
                                 left: "0",
                                 float: "left",
-                                backgroundColor: "blue",
+                                backgroundColor: "grey",
                                 width: "100vw",
                                 opacity: 0.7
                             }}
                         >
-                            <DropDownList items={expand} />
+                            <DropDownList dropDownItems={expand} />
                         </Box>
                     ) : null}
             </Box>

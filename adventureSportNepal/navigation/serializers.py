@@ -1,27 +1,25 @@
 from rest_framework import serializers
-from trek.models import Trek
-from ski.models import Ski
-
+from .models import *
 
 class TrekNavSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='package_name')
+    name = serializers.CharField(source='trek_nav_item')
     href = serializers.SerializerMethodField()
 
     class Meta:
-        model = Trek
+        model = TrekNav
         fields = ('name', 'href')
 
     def get_href(self, obj):
-        return f"ski/{obj.id}"
+        return f"/trek/{obj.id}"
 
 
 class SkiNavSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='package_name')
+    name = serializers.CharField(source='ski_nav_item')
     href = serializers.SerializerMethodField()
 
     class Meta:
-        model = Ski
+        model = SkiNav
         fields = ('name', 'href')
 
     def get_href(self, obj):
-        return f"ski/{obj.id}"
+        return f"/ski/{obj.id}"
