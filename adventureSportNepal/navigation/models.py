@@ -15,7 +15,7 @@ class TrekNav(models.Model):
         trek_nav = TrekNav.objects.all()
         print(trek_nav.count())
         if (trek_nav.count() >= MAX_NAV_ITEMS):
-            raise ValidationError("Cannot Add more than 5")
+            raise ValidationError(f"Cannot Show More Than {MAX_NAV_ITEMS} Items in Navigation")
     
     def __str__(self):
         return str(self.trek_nav_item)
@@ -26,7 +26,7 @@ class SkiNav(models.Model):
     def clean(self):
         ski_nav = SkiNav.objects.all()
         if (ski_nav.count() >= MAX_NAV_ITEMS):
-            raise ValidationError("Cannot Add more than 5.")
+            raise ValidationError(f"Cannot Show More Than {MAX_NAV_ITEMS} Items in Navigation")
 
     def __str__(self):
         return str(self.ski_nav_item)
