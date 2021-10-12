@@ -89,6 +89,10 @@ export const Expeditions: NavigationItemType[] = [
                 name: "Manaslu Circuit Trek",
                 href: '',
             },
+            {
+                name: "K2 Circuit Trek",
+                href: '',
+            },
         ]
     }
 
