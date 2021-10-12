@@ -1,6 +1,5 @@
 import { NavigationItemType } from '../types.d';
 
-
 export const AboutUs = [
     {
         name: "Our Team",
@@ -15,10 +14,10 @@ export const AboutUs = [
 export const Expeditions: NavigationItemType[] = [
     {
         name: "COMBO",
-        href: '',
+        items: null
     },
     {
-        name: "SKI",
+        name: "SKING",
         items: [
             {
                 name: "Ski in Puthan Hinchuli (7426m)",
@@ -92,4 +91,5 @@ export const Expeditions: NavigationItemType[] = [
             },
         ]
     }
+
 ]
