@@ -16,7 +16,6 @@ import DestopNavigation from './components/DestopNavigation';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
 import { selectExpeditionList, selectStatus, getNavigationList } from './navigationSlice';
-import { Expeditions } from './components/MenuItems';
 import { NavigationItemType } from './types.d';
 
 
