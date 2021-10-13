@@ -10,15 +10,17 @@ import {
     Button
 } from '@material-ui/core';
 import { Fragment } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const ABOUTUS = [
-    { name: "Our Team", items: [] },
-    { name: "Safety", items: [] }
+    { name: "Our Team", href: "/ourteam" },
+    { name: "Safety", href: "/saftey" }
 ]
 
-const InitMenu = ({ state, expeditionList, setState }: any) => {
+const InitMenu = ({ state, expeditionList, setState, closeDrawer }: any) => {
+    const history = useHistory();
     const handleClick = (name: string) => {
         switch (name) {
             case "EXPEDITION":
@@ -30,18 +32,42 @@ const InitMenu = ({ state, expeditionList, setState }: any) => {
             case "treking":
                 setState((old: any) => [...old, expeditionList.find((obj: any) => obj.name == "treking").items]);
                 break;
-            case "treking":
+            case "sking":
                 setState((old: any) => [...old, expeditionList.find((obj: any) => obj.name == "sking").items]);
                 break;
+            case "FAQ":
+                history.push('/faq');
+                closeDrawer();
+                break;
+            default:
+                history.push('/');
+                closeDrawer();
+            // Add more case for enquiry
         }
     }
+    
     return (
         <List>
-            {state.at(-1).map((s: any) => (
-                <ListItem button onClick={() => handleClick(s.name)}>
-                    <ListItemText primary={(s.name).toUpperCase()} />
-                </ListItem>
-            ))}
+            {state.at(-1).map((obj: any) =>
+                obj.hasOwnProperty('items')
+                    ? (
+                        <ListItem
+                            button
+                            onClick={() => handleClick(obj.name)}
+                        >
+                            <ListItemText primary={(obj.name).toUpperCase()} />
+                        </ListItem>
+                    ) : (
+                        <ListItem
+                            button
+                            component={Link}
+                            to={obj.href}
+                            onClick={closeDrawer}
+                        >
+                            <ListItemText primary={(obj.name).toUpperCase()} />
+                        </ListItem>
+                    )
+            )}
         </List>
     );
 }
@@ -78,6 +104,7 @@ export default function DrawerData(props: any) {
                         state={state}
                         setState={setState}
                         expeditionList={expeditionList}
+                        closeDrawer={handleDrawerToggle}
                     />
                 </Grid>
             </Grid>
