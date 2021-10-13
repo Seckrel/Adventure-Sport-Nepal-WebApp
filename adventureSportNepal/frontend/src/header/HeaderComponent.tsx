@@ -101,6 +101,7 @@ export default function Header() {
                 isDrawerOpen={isDrawerOpen}
                 handleDrawerToggle={handleDrawerToggle}
                 drawerTransitionMiliSecond={fadeTransitionMiliSecond}
+                expeditionList={expeditionList}
             />
         </Fragment>
     )

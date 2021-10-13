@@ -9,31 +9,83 @@ interface Props {
     isDrawerOpen: boolean;
     handleDrawerToggle: any;
     drawerTransitionMiliSecond: number;
+    expeditionList: any
 }
 
-/*
-    TODO: Change const drawer to acordion for nested nav
-    when number of pages are fixed
-*/
+class Stack {
+    items: any;
 
+    constructor() {
+        this.items = [];
+    }
+
+    push(element: any): void {
+        // push element into the items
+        this.items.push(element);
+    }
+    pop() {
+        if (this.items.length == 0) {
+            console.log("underflow");
+            return
+        }
+        return this.items.pop();
+    }
+    peek() {
+        return this.items[this.items.length - 1];
+    }
+    tos() {
+        return this.items.length;
+    }
+    isEmpty() {
+        return this.items.length == 0;
+    }
+
+}
+
+interface InitialStackInterface {
+    [index: number]: {
+        name: string
+        items: any
+    }
+}
+
+const InitialStack: InitialStackInterface = [
+    {
+        name: "HOME",
+        items: []
+    },
+    {
+        name: "EXPEDITION",
+        items: []
+    },
+    {
+        name: "ABOUT US",
+        items: []
+    },
+    {
+        name: "FAQ",
+        items: []
+    },
+    {
+        name: "ENQUIRY",
+        items: []
+    }
+]
 
 
 export default function NavigationDrawer(props: Props) {
     const {
         isDrawerOpen,
         handleDrawerToggle,
-        drawerTransitionMiliSecond } = props;
+        drawerTransitionMiliSecond, expeditionList } = props;
     const classes = useStyles();
-
-    const [state, setState] = useState(null);
-
+    const stack = new Stack();
+    stack.push(InitialStack);
+    const [state, setState] = useState(new Array(InitialStack));
     const handleOnClose = () => {
-        setState(null);
+        setState(new Array(InitialStack));
         handleDrawerToggle();
     }
-
-
-
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -56,6 +108,7 @@ export default function NavigationDrawer(props: Props) {
                         handleDrawerToggle={handleOnClose}
                         state={state}
                         setState={setState}
+                        expeditionList={expeditionList}
                     />
                 </Drawer>
             </nav>
