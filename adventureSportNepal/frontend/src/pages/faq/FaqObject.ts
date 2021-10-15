@@ -1,7 +1,7 @@
 export const FaqObject = [
     {
         label: "ski1",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much, ski"
@@ -18,7 +18,7 @@ export const FaqObject = [
     },
     {
         label: "trek1",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much"
@@ -35,7 +35,7 @@ export const FaqObject = [
     },
     {
         label: "ski2",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much, ski"
@@ -52,7 +52,7 @@ export const FaqObject = [
     },
     {
         label: "trek",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much"
@@ -69,7 +69,7 @@ export const FaqObject = [
     },
     {
         label: "ski",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much, ski"
@@ -86,7 +86,7 @@ export const FaqObject = [
     },
     {
         label: "paragliding",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much"
@@ -103,7 +103,7 @@ export const FaqObject = [
     },
     {
         label: "snowboarding",
-        faqs: [
+        question_and_answer: [
             {
                 question: "Hey what's up",
                 answer: "Nothing much"

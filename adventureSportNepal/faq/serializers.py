@@ -12,4 +12,4 @@ class FaqSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Faq
-        fields = ('id', 'label', 'question_and_answer')
+        fields = ('label', 'question_and_answer')

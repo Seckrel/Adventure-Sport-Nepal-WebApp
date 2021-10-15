@@ -11,7 +11,7 @@ export const getTrekPackage = createAsyncThunk(
                 credentials: 'same-origin'
             },
         };
-        return await fetch(`http://127.0.0.1:8000/trek/${id}`, options)
+        return await fetch(`http://127.0.0.1:8000/trek-api/${id}/`, options)
             .then(res => res.json())
             .then(data => data.trekPackage)
             .catch((err: Error) => console.log(err.message))

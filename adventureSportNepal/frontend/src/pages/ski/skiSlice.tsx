@@ -11,7 +11,7 @@ export const getSkiPackage = createAsyncThunk(
                 credentials: 'same-origin'
             },
         };
-        return await fetch(`http://127.0.0.1:8000/ski/${id}`, options)
+        return await fetch(`http://127.0.0.1:8000/ski-api/${id}/`, options)
             .then(res => res.json())
             .then(data => data.skiPackage)
             .catch((err: Error) => console.log(err.message))

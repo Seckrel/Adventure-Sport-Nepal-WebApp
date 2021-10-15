@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 
-export default function FaqTabsComponent() {
+export default function FaqTabsComponent({faq_packages} : any) {
     const classes = useStyles();
     const [value, setValue] = useState(0);
 
@@ -73,15 +73,15 @@ export default function FaqTabsComponent() {
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs"
                     >
-                        {FaqObject.map((item: any, idx: number) => (
+                        {faq_packages.map((item: any, idx: number) => (
                             <Tab label={item.label} key={idx} {...a11yProps(idx)} />
                         ))}
                     </Tabs>
                 </Box>
             </AppBar>
-            {FaqObject.map((item: any, idx: number) => (
+            {faq_packages.map((item: any, idx: number) => (
                 <TabPanel value={value} key={idx} index={idx}>
-                    {item.faqs.map((faq: any, index: number) => (
+                    {item.question_and_answer.map((faq: any, index: number) => (
                         <Fragment key={index}>
                             <Typography variant="h6">Question: {faq.question}</Typography>
                             <Typography variant="subtitle1">Answer: {faq.answer}</Typography>
